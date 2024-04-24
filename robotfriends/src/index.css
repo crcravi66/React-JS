@@ -1,6 +1,9 @@
 body {
   margin: 0;
-  background-color: rgba(69, 40, 151, 0.87);
+  padding: 1rem;
+  background: #000046;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #0996bd, #01015a);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #067897, #010164); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
