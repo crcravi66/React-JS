@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React,{ Component } from "react";
+import CardsList from "./CardsList"
+import SearchBox from "./Searchbox"
+import { robots } from './robots';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+class App extends Component {
+  constructor (){
+    super()
+    this.state = {
+      robots : robots,
+      Searchfield : ''
+    }
+  }
+
+  onSearchChange = (event) => {
+    this.setState({Searchfield: event.target.value})
+  }
+  
+  render(){    
+    const filterRobots = this.state.robots.filter(robots => {
+    return robots.name.toLocaleLowerCase().includes(this.state.Searchfield.toLocaleLowerCase())
+    })
+    return (
+      <div className="tc">
+        <h1>RoboFriends</h1>
+          <SearchBox SearchChange ={this.onSearchChange}/>
+          <CardsList robots={filterRobots} />
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    );
+  }   
 }
 
-export default App
+
+export default App    
